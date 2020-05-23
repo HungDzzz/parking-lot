@@ -141,4 +141,4 @@ describe('status', async function () {
       var actual = await parkingLot.status()
       assert.equal(actual, actual)
     })
-})
+}) 
