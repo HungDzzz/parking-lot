@@ -33,6 +33,9 @@ const park = (carNumber) => {
 
 const leave = (carNumber, time) => {
     let slot = parking.find(car => car.registrationNo == carNumber)
+    if (!slot) {
+        return `Registration number ${carNumber} not found`
+    }
     parking[slot.slot - 1] = slot.slot
     availableSlot.push(slot.slot)
     return `Registration number ${carNumber} with Slot Number ${slot.slot} is free with Charge ${getCharge(time)}`

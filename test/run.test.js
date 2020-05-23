@@ -90,7 +90,7 @@ describe('park DL-12-AA-9999', async function () {
 
 describe('leave KA-01-HH-1234 4', async function () {
     it('should be a free position and a fee', async function () {
-      var expected = 'Registration number KA-01-HH1234 with Slot Number 1 is free with Charge 30'
+      var expected = 'Registration number KA-01-HH-1234 with Slot Number 1 is free with Charge 30'
       var actual = await parkingLot.leave('KA-01-HH-1234', '4')
       assert.equal(actual, expected)
     })
@@ -98,7 +98,7 @@ describe('leave KA-01-HH-1234 4', async function () {
 
 describe('leave KA-01-BB-0001 6', async function () {
     it('should be a free position and a fee', async function () {
-      var expected = 'Registration number KA-01-BB0001 with Slot Number 3 is free with Charge 50'
+      var expected = 'Registration number KA-01-BB-0001 with Slot Number 3 is free with Charge 50'
       var actual = await parkingLot.leave('KA-01-BB-0001', '6')
       assert.equal(actual, expected)
     })
