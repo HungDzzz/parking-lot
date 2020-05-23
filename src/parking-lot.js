@@ -18,6 +18,8 @@ const createParkingLot = (size) => {
 const park = (carNumber) => {
     if (maxSize == 0) {
         return 'Parking has not been initialized'
+    } else if(availableSlot.length == 0) {
+        return 'Sorry, parking lot is full'
     } else {
         let carInfo = {
             slot: getSlotNumber(),
