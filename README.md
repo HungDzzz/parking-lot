@@ -18,7 +18,7 @@ hour.
 # Solution:
 Create parking array and availableSlot array:  
 - parking with parking in the car park.
-- availableSlot contains the location of the vehicle leaving the parking lot.
+- availableSlot contains the location of the vehicle leaving the parking lot.  
 When the car enters the parking lot, the smallest position in the availableSlot array will be taken as the parking position. and delete that location from the availableSlot array.  
 When the car leaves the parking lot, the parking array is updated and the car parking location is added to the availableSlot array.  
 

@@ -9,8 +9,6 @@ const createParkingLot = (size) => {
             parking.push(i)
             availableSlot.push(i)
         }
-        console.log(parking)
-        console.log(availableSlot)
         return `Created parking lot with ${maxSize} slots`;
     } catch (error) {
         return "Parameter is not a number"
@@ -18,7 +16,17 @@ const createParkingLot = (size) => {
 }
 
 const park = (carNumber) => {
-    return null
+    if (maxSize == 0) {
+        return 'Parking has not been initialized'
+    } else {
+        let carInfo = {
+            slot: getSlotNumber(),
+            registrationNo: carNumber
+        }
+        parking[getSlotNumber() - 1] = carInfo
+        availableSlot.splice(availableSlot.indexOf(carInfo.slot), 1)
+        return `Allocated slot number: ${carInfo.slot}`
+    }
 }
 
 const leave = (carNumber, time) => {
@@ -30,7 +38,8 @@ const status = () => {
 }
 
 const getSlotNumber = () => {
-    return null
+    const slot = availableSlot.reduce((a, b) => Math.min(a, b))
+    return slot
 }
 
 const getCharge = () => {
