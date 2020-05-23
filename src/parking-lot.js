@@ -30,7 +30,10 @@ const park = (carNumber) => {
 }
 
 const leave = (carNumber, time) => {
-    return null
+    let slot = parking.find(car => car.registrationNo == carNumber)
+    parking[slot.slot - 1] = slot.slot
+    availableSlot.push(slot.slot)
+    return `Registration number ${carNumber} with Slot Number ${slot.slot} is free with Charge ${getCharge(time)}`
 }
 
 const status = () => {
@@ -42,8 +45,18 @@ const getSlotNumber = () => {
     return slot
 }
 
-const getCharge = () => {
-    return null
+const getCharge = (time) => {
+    try {
+        let charge;
+        let t = parseInt(time)
+        if (t <= 2) {
+            return charge = 10
+        } else {
+            return charge = 10 + ((t-2) * 10)
+        }
+    } catch (error) {
+        return "Time is not a number"
+    }
 }
 
 module.exports = {
