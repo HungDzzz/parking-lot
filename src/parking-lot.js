@@ -3,16 +3,12 @@ var parking = []
 var availableSlot = []
 
 const createParkingLot = (size) => {
-    try {
-        maxSize = parseInt(size)
-        for (let i = 1; i <= maxSize; i++) {
-            parking.push(i)
-            availableSlot.push(i)
-        }
-        return `Created parking lot with ${maxSize} slots`;
-    } catch (error) {
-        return "Parameter is not a number"
+    maxSize = isNaN(parseInt(size)) ? 0 : parseInt(size)
+    for (let i = 1; i <= maxSize; i++) {
+        parking.push(i)
+        availableSlot.push(i)
     }
+    return `Created parking lot with ${maxSize} slots`
 }
 
 const park = (carNumber) => {
@@ -32,13 +28,19 @@ const park = (carNumber) => {
 }
 
 const leave = (carNumber, time) => {
+    let t;
+    if (isNaN(parseInt(time))) {
+        return "Time is not a number"
+    } else {
+        t = parseInt(time)
+    }
     let slot = parking.find(car => car.registrationNo == carNumber)
     if (!slot) {
         return `Registration number ${carNumber} not found`
     }
     parking[slot.slot - 1] = slot.slot
     availableSlot.push(slot.slot)
-    return `Registration number ${carNumber} with Slot Number ${slot.slot} is free with Charge ${getCharge(time)}`
+    return `Registration number ${carNumber} with Slot Number ${slot.slot} is free with Charge ${getCharge(t)}`
 }
 
 const status = () => {
@@ -64,16 +66,11 @@ const getSlotNumber = () => {
 }
 
 const getCharge = (time) => {
-    try {
-        let charge;
-        let t = parseInt(time)
-        if (t <= 2) {
-            return charge = 10
-        } else {
-            return charge = 10 + ((t-2) * 10)
-        }
-    } catch (error) {
-        return "Time is not a number"
+    let charge;
+    if (time <= 2) {
+        return charge = 10
+    } else {
+        return charge = 10 + ((time-2) * 10)
     }
 }
 

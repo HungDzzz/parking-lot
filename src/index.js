@@ -13,6 +13,7 @@ const main = () => {
             case ('create_parking_lot'):
                 try {
                     const result = await parkingLot.createParkingLot(input[1])
+                    console.log('---------------OUTPUT--------------')
                     console.log(result)
                 } catch (e) {
                     console.log('Error: ', e)
