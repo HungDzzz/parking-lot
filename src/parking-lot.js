@@ -37,7 +37,20 @@ const leave = (carNumber, time) => {
 }
 
 const status = () => {
-    return null
+    if (maxSize == 0) {
+        return 'Parking has not been initialized'
+    } else if (maxSize == availableSlot.length) {
+        return `Parking lot is empty`
+    } else {
+        let content = `Slot No. Registration No.`
+        let map = parking.map(car => {
+            if(car.slot) {
+                return content = content + `\n${car.slot}   ${car.registrationNo}`
+            }
+        })
+        Promise.all(map)
+        return content
+    }
 }
 
 const getSlotNumber = () => {
